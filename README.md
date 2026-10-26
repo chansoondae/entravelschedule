@@ -11,13 +11,12 @@
 
 ```
 navermap/
-├── web/                       # Next.js 웹앱 (모바일 대응)
-│   ├── lib/naver.ts           # 네이버 예약 GraphQL 호출 + 칸 상태 판정
-│   ├── app/api/schedule/      # 서버 API: GET /api/schedule?start=YYYY-MM-DD&days=N
-│   ├── app/page.tsx           # 화면 + 대여 가능 시간 계산
-│   ├── app/layout.tsx
-│   └── app/globals.css
-└── check_availability.py      # 터미널용 간단 조회 스크립트
+└── web/                       # Next.js 웹앱 (모바일 대응)
+    ├── lib/naver.ts           # 네이버 예약 GraphQL 호출 + 칸 상태 판정
+    ├── app/api/schedule/      # 서버 API: GET /api/schedule?start=YYYY-MM-DD&days=N
+    ├── app/page.tsx           # 화면 + 대여 가능 시간 계산
+    ├── app/layout.tsx
+    └── app/globals.css
 ```
 
 ## 웹앱 (web/)
@@ -75,15 +74,6 @@ GET /api/schedule?start=2026-11-01&days=30
 - `status`: `free`(비어있음) · `booked`(예약됨) · `closed`(운영안함)
 
 브라우저에서 네이버 API를 직접 부르면 CORS에 막히기 때문에, Next.js 서버가 대신 호출합니다.
-
-## 터미널 스크립트 (check_availability.py)
-
-```bash
-python3 check_availability.py                # 오늘부터 7일
-python3 check_availability.py 2026-11-01 14  # 지정일부터 14일
-```
-
-0~24시 전체 시간대를 날짜별 표(○ 비어있음 · ● 예약됨 · - 운영안함)로 출력합니다. 웹앱의 주말·2시간·간격 규칙은 **적용되지 않습니다**.
 
 ## 참고
 
